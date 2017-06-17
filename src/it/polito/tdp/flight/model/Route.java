@@ -98,4 +98,54 @@ public class Route {
 		this.equipment = equipment;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + airlineId;
+		result = prime * result + ((codeshare == null) ? 0 : codeshare.hashCode());
+		result = prime * result + destinationAirportId;
+		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
+		result = prime * result + sourceAirportId;
+		result = prime * result + stops;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Route other = (Route) obj;
+		if (airlineId != other.airlineId)
+			return false;
+		if (codeshare == null) {
+			if (other.codeshare != null)
+				return false;
+		} else if (!codeshare.equals(other.codeshare))
+			return false;
+		if (destinationAirportId != other.destinationAirportId)
+			return false;
+		if (equipment == null) {
+			if (other.equipment != null)
+				return false;
+		} else if (!equipment.equals(other.equipment))
+			return false;
+		if (sourceAirportId != other.sourceAirportId)
+			return false;
+		if (stops != other.stops)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Route [airline=" + airline + ", airlineId=" + airlineId + ", sourceAirport=" + sourceAirport
+				+ ", sourceAirportId=" + sourceAirportId + ", destinationAirport=" + destinationAirport
+				+ ", destinationAirportId=" + destinationAirportId + "]";
+	}
+
 }
